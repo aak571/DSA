@@ -14,13 +14,14 @@
 
 # O(n^2)
 
-
+# Selection Sort is better than Bubble Sort because it has lesser number of Swaps the Swapping expression
+# is outside of the inner loop
 def sort(nums):
     i = 0
     while i < len(nums) - 1:
         mi = i
         j = i + 1
-        while j < n:
+        while j < len(nums):
             if nums[j] < nums[mi]:
                 mi = j
             j += 1
@@ -30,3 +31,26 @@ def sort(nums):
 
 nums = [64, 25, 12, 22, 11]
 print(sort(nums))
+
+
+
+# [4, 3, 2, 1]
+
+# i = 0  i < 3 mi = 0  j = 0+1=1
+#    j = 1 j<4  mi = 3 SWAP
+
+# [1, 3, 2, 4]
+
+# i = 1  i < 3  mi = 1  j = 1+1=2
+#   j = 2 j<4  mi = 2  SWAP
+
+# [1, 2, 3, 4]
+
+# i = 2  i < 3  mi = 2  j = 2+1=3
+#   j = 3  j<4 mi=2 NO SWAP
+
+# i = 3 i < 3
+# [1, 2, 3, 4] -> final
+
+# O(1) -> Space - constant
+# O(n^2) -> Time

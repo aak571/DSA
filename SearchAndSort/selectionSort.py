@@ -16,21 +16,21 @@
 
 # Selection Sort is better than Bubble Sort because it has lesser number of Swaps the Swapping expression
 # is outside of the inner loop
-# def sort(nums):
-#     i = 0
-#     while i < len(nums) - 1:
-#         mi = i
-#         j = i + 1
-#         while j < len(nums):
-#             if nums[j] < nums[mi]:
-#                 mi = j
-#             j += 1
-#         nums[i], nums[mi] = nums[mi], nums[i]
-#         i += 1
-#     return nums
+def sort(nums):
+    i = 0
+    while i < len(nums) - 1:
+        mi = i
+        j = i + 1
+        while j < len(nums):
+            if nums[j] < nums[mi]:
+                mi = j
+            j += 1
+        nums[i], nums[mi] = nums[mi], nums[i]
+        i += 1
+    return nums
 
-# nums = [64, 25, 12, 22, 11]
-# print(sort(nums))
+nums = [64, 25, 12, 22, 11]
+print(sort(nums))
 
 
 def sort(nums):

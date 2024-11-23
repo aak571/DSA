@@ -35,7 +35,7 @@
 # n*3 = 3n = O(n)
 #Time C -> O(n + k) -> best, avg, worst
 #Space C -> O(k) -> best, avg, worst
-def counting_sort(arr): #n          always k > n
+def counting_sort(arr): #n          most of the times k will be greater than n
     # Step 1: Find the range of the input array
     if not arr:
         return []  # Handle edge case of empty array
@@ -65,8 +65,3 @@ def counting_sort(arr): #n          always k > n
 
 nums = [-1, 5, 1, 5, 1, 6]
 print(counting_sort(nums))
-
-    # arr[i] = 6  o[c[6 -(-1)] - 1]] = o[c[7] - 1] = o[6 - 1] = o[5] = 6  c[7] -= 1
-    # arr[i] = 1  o[c[1 -(-1)] - 1]] = o[c[2] - 1] = o[3 - 1] = o[2] = 1  c[2] -= 1
-    # arr[i] = 5  o[c[5 -(-1)] - 1]] = o[c[6] - 1] = o[5 - 1] = o[4] = 5  c[6] -= 1
-    # arr[i] = 1  o[c[1 -(-1)] - 1]] = o[c[7] - 1] = o[5 - 1] = o[4] = 1

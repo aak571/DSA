@@ -1,204 +1,204 @@
-# Time Complexity - O(k.n) - k is the maximum digits and n is the length of list
-# Space Complexity - O(n + b) - n is the length of list and b is range (0 to 9)
+# # Time Complexity - O(k.n) - k is the maximum digits and n is the length of list
+# # Space Complexity - O(n + b) - n is the length of list and b is range (0 to 9)
 
-"""Radix Sort is not inherently designed to handle negative numbers and decimal values because it
-    processes numbers digit-by-digit, and negative numbers include a - sign and decimal point that cannot
-    be handled directly in the standard implementation. However, with modifications, Radix Sort can be
-    adapted to handle negative numbers effectively."""
+# """Radix Sort is not inherently designed to handle negative numbers and decimal values because it
+#     processes numbers digit-by-digit, and negative numbers include a - sign and decimal point that cannot
+#     be handled directly in the standard implementation. However, with modifications, Radix Sort can be
+#     adapted to handle negative numbers effectively."""
 
-"""Radix Sort works well for decimal numbers when:
-1. Precision (number of decimal places) is known or can be standardized.
-2. A stable and efficient sorting algorithm is required."""
-
-
-arr = [501, 408, 3, 24]
-max = max(arr) = 501 = max is 3 digits
-
-Sort it by it's units place - [501, 2, 24, 408] - Counting Sort
-
-#Set the count to zeros
-count = [0, 1, 0, 1, 1, 0, 0, 0, 1, 0] # 0 - 9 -> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-#        0  1  2  3  4  5  6  7  8  9
-
-#Set the output to zeros
-output = [0, 0, 0, 0]
-#         0  1  2  3
-
-exp = 1
-loop {
-    arr[i] = 501    index = (arr[i] // exp) % 10 = (501 // 1) % 10 = 501 % 10 = 1
-    c[index] += 1
-
-    arr[i] = 408    index = (arr[i] // exp) % 10 = (408 // 1) % 10 = 408 % 10 = 8
-    c[index] += 1
-
-    arr[i] = 3      index = (arr[i] // exp) % 10 = (3 // 1) % 10 = 3 % 10 = 3
-    c[index] += 1
-
-    arr[i] = 24     index = (arr[i] // exp) % 10 = (24 // 1) % 10 = 24 % 10 = 4
-    c[index] += 1
-}
-
-#cumulative count
-loop {
-    count  = [0, 0, 1, 1, 2, 3, 3, 3, 3, 4]
-    #         0  1  2  3  4  5  6  7  8  9
-}
-
-output = [501, 3, 24, 408]
-#          0   1  2    3
-
-#construct the output
-i = len(arr) - 1
-loop {
-    arr[i] = 24
-    index = (arr[i] // exp) % 10 = (24 // 1) % 10 = 24 % 10 = 4
-    o[c[index] - 1] = arr[i] -> o[2] =  24
-    c[index] -= 1
-
-    arr[i] = 3
-    index = (arr[i] // exp) % 10 = (3 // 1) % 10 = 3 % 10 = 3
-    o[c[index] - 1] = arr[i] -> o[1] =  3
-    c[index] -= 1
-
-    arr[i] = 408
-    index = (arr[i] // exp) % 10 = (408 // 1) % 10 = 408 % 10 = 8
-    o[c[index] - 1] = arr[i] -> o[3] =  408
-    c[index] -= 1
-
-    arr[i] = 501
-    index = (arr[i] // exp) % 10 = (501 // 1) % 10 = 501 % 10 = 1
-    o[c[index] - 1] = arr[i] -> o[0] =  501
-    c[index] -= 1
-}
+# """Radix Sort works well for decimal numbers when:
+# 1. Precision (number of decimal places) is known or can be standardized.
+# 2. A stable and efficient sorting algorithm is required."""
 
 
+# arr = [501, 408, 3, 24]
+# max = max(arr) = 501 = max is 3 digits
 
+# Sort it by it's units place - [501, 2, 24, 408] - Counting Sort
 
+# #Set the count to zeros
+# count = [0, 1, 0, 1, 1, 0, 0, 0, 1, 0] # 0 - 9 -> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# #        0  1  2  3  4  5  6  7  8  9
 
+# #Set the output to zeros
+# output = [0, 0, 0, 0]
+# #         0  1  2  3
 
-arr = [501, 003, 024, 408]
-Sort it by it's ten's place - [501, 3, 408, 24] - Counting Sort
+# exp = 1
+# loop {
+#     arr[i] = 501    index = (arr[i] // exp) % 10 = (501 // 1) % 10 = 501 % 10 = 1
+#     c[index] += 1
 
-#Reset the count back to zeros
-count = [3, 0, 1, 0, 0, 0, 0, 0, 0, 0] # 0 - 9 -> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-#        0  1  2  3  4  5  6  7  8  9
+#     arr[i] = 408    index = (arr[i] // exp) % 10 = (408 // 1) % 10 = 408 % 10 = 8
+#     c[index] += 1
 
-#Reset the output back to zeros
-output = [0, 0, 0, 0]
-#         0  1  2  3
+#     arr[i] = 3      index = (arr[i] // exp) % 10 = (3 // 1) % 10 = 3 % 10 = 3
+#     c[index] += 1
 
-exp = 10
-loop {
-    arr[i] = 501    index = (arr[i] // exp) % 10 = (501 // 10) % 10 = 50 % 10 = 0
-    c[index] += 1
+#     arr[i] = 24     index = (arr[i] // exp) % 10 = (24 // 1) % 10 = 24 % 10 = 4
+#     c[index] += 1
+# }
 
-    arr[i] = 3      index = (arr[i] // exp) % 10 = (3 // 10) % 10 = 0 % 10 = 0
-    c[index] += 1
+# #cumulative count
+# loop {
+#     count  = [0, 0, 1, 1, 2, 3, 3, 3, 3, 4]
+#     #         0  1  2  3  4  5  6  7  8  9
+# }
 
-    arr[i] = 24     index = (arr[i] // exp) % 10 = (24 // 10) % 10 = 2 % 10 = 2
-    c[index] += 1
+# output = [501, 3, 24, 408]
+# #          0   1  2    3
 
-    arr[i] = 408    index = (arr[i] // exp) % 10 = (24 // 10) % 10 = 40 % 10 = 0
-    c[index] += 1
-}
+# #construct the output
+# i = len(arr) - 1
+# loop {
+#     arr[i] = 24
+#     index = (arr[i] // exp) % 10 = (24 // 1) % 10 = 24 % 10 = 4
+#     o[c[index] - 1] = arr[i] -> o[2] =  24
+#     c[index] -= 1
 
-#cumulative count
-loop {
-    count  = [0, 3, 3, 4, 4, 4, 4, 4, 4, 4]
-    #         0  1  2  3  4  5  6  7  8  9
-}
+#     arr[i] = 3
+#     index = (arr[i] // exp) % 10 = (3 // 1) % 10 = 3 % 10 = 3
+#     o[c[index] - 1] = arr[i] -> o[1] =  3
+#     c[index] -= 1
 
-output = [501, 003, 408, 024]
-#          0    1    2    3
+#     arr[i] = 408
+#     index = (arr[i] // exp) % 10 = (408 // 1) % 10 = 408 % 10 = 8
+#     o[c[index] - 1] = arr[i] -> o[3] =  408
+#     c[index] -= 1
 
-#construct the output
-i = len(arr) - 1
-loop {
-    arr[i] = 408
-    index = (arr[i] // exp) % 10 = (408 // 10) % 10 = 40 % 10 = 0
-    o[c[index] - 1] = arr[i] -> o[2] =  408
-    c[index] -= 1
-
-    arr[i] = 24
-    index = (arr[i] // exp) % 10 = (24 // 10) % 10 = 2 % 10 = 2
-    o[c[index] - 1] = arr[i] -> o[3] =  24
-    c[index] -= 1
-
-    arr[i] = 3
-    index = (arr[i] // exp) % 10 = (3 // 10) % 10 = 0 % 10 = 0
-    o[c[index] - 1] = arr[i] -> o[1] =  3
-    c[index] -= 1
-
-    arr[i] = 501
-    index = (arr[i] // exp) % 10 = (501 // 10) % 10 = 50 % 10 = 0
-    o[c[index] - 1] = arr[i] -> o[0] =  501
-    c[index] -= 1
-}
+#     arr[i] = 501
+#     index = (arr[i] // exp) % 10 = (501 // 1) % 10 = 501 % 10 = 1
+#     o[c[index] - 1] = arr[i] -> o[0] =  501
+#     c[index] -= 1
+# }
 
 
 
 
 
 
-arr = [501, 003, 408, 024]
-Sort it by it's hundred's place - [003, 024, 408, 501] - Counting Sort
+# arr = [501, 003, 024, 408]
+# Sort it by it's ten's place - [501, 3, 408, 24] - Counting Sort
 
-#Reset the count back to zeros
-count = [2, 0, 0, 0, 1, 1, 0, 0, 0, 0] # 0 - 9 -> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-#        0  1  2  3  4  5  6  7  8  9
+# #Reset the count back to zeros
+# count = [3, 0, 1, 0, 0, 0, 0, 0, 0, 0] # 0 - 9 -> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# #        0  1  2  3  4  5  6  7  8  9
 
-#Reset the output back to zeros
-output = [0, 0, 0, 0]
-#         0  1  2  3
+# #Reset the output back to zeros
+# output = [0, 0, 0, 0]
+# #         0  1  2  3
 
-exp = 100
-loop {
-    arr[i] = 501    index = (arr[i] // exp) % 10 = (501 // 100) % 10 = 5 % 10 = 5
-    c[index] += 1
+# exp = 10
+# loop {
+#     arr[i] = 501    index = (arr[i] // exp) % 10 = (501 // 10) % 10 = 50 % 10 = 0
+#     c[index] += 1
 
-    arr[i] = 3      index = (arr[i] // exp) % 10 = (3 // 100) % 10 = 0 % 10 = 0
-    c[index] += 1
+#     arr[i] = 3      index = (arr[i] // exp) % 10 = (3 // 10) % 10 = 0 % 10 = 0
+#     c[index] += 1
 
-    arr[i] = 408    index = (arr[i] // exp) % 10 = (408 // 100) % 10 = 4 % 10 = 4
-    c[index] += 1
+#     arr[i] = 24     index = (arr[i] // exp) % 10 = (24 // 10) % 10 = 2 % 10 = 2
+#     c[index] += 1
 
-    arr[i] = 24     index = (arr[i] // exp) % 10 = (24 // 100) % 10 = 0 % 10 = 0
-    c[index] += 1
-}
+#     arr[i] = 408    index = (arr[i] // exp) % 10 = (24 // 10) % 10 = 40 % 10 = 0
+#     c[index] += 1
+# }
 
-#cumulative count
-loop {
-    count  = [0, 2, 2, 2, 3, 3, 4, 4, 4, 4]
-    #         0  1  2  3  4  5  6  7  8  9
-}
+# #cumulative count
+# loop {
+#     count  = [0, 3, 3, 4, 4, 4, 4, 4, 4, 4]
+#     #         0  1  2  3  4  5  6  7  8  9
+# }
 
-output = [3, 24, 408, 501] -> final sorted list
-#         0   1   2    3
+# output = [501, 003, 408, 024]
+# #          0    1    2    3
 
-#construct the output
-i = len(arr) - 1
-loop {
-    arr[i] = 24
-    index = (arr[i] // exp) % 10 = (24 // 100) % 10 = 0 % 10 = 0
-    o[c[index] - 1] = arr[i] -> o[1] =  24
-    c[index] -= 1
+# #construct the output
+# i = len(arr) - 1
+# loop {
+#     arr[i] = 408
+#     index = (arr[i] // exp) % 10 = (408 // 10) % 10 = 40 % 10 = 0
+#     o[c[index] - 1] = arr[i] -> o[2] =  408
+#     c[index] -= 1
 
-    arr[i] = 408
-    index = (arr[i] // exp) % 10 = (408 // 100) % 10 = 4 % 10 = 4
-    o[c[index] - 1] = arr[i] -> o[2] =  408
-    c[index] -= 1
+#     arr[i] = 24
+#     index = (arr[i] // exp) % 10 = (24 // 10) % 10 = 2 % 10 = 2
+#     o[c[index] - 1] = arr[i] -> o[3] =  24
+#     c[index] -= 1
 
-    arr[i] = 3
-    index = (arr[i] // exp) % 10 = (3 // 100) % 10 = 0 % 10 = 0
-    o[c[index] - 1] = arr[i] -> o[0] =  3
-    c[index] -= 1
+#     arr[i] = 3
+#     index = (arr[i] // exp) % 10 = (3 // 10) % 10 = 0 % 10 = 0
+#     o[c[index] - 1] = arr[i] -> o[1] =  3
+#     c[index] -= 1
 
-    arr[i] = 501
-    index = (arr[i] // exp) % 10 = (501 // 100) % 10 = 50 % 10 = 5
-    o[c[index] - 1] = arr[i] -> o[3] =  501
-    c[index] -= 1
-}
+#     arr[i] = 501
+#     index = (arr[i] // exp) % 10 = (501 // 10) % 10 = 50 % 10 = 0
+#     o[c[index] - 1] = arr[i] -> o[0] =  501
+#     c[index] -= 1
+# }
+
+
+
+
+
+
+# arr = [501, 003, 408, 024]
+# Sort it by it's hundred's place - [003, 024, 408, 501] - Counting Sort
+
+# #Reset the count back to zeros
+# count = [2, 0, 0, 0, 1, 1, 0, 0, 0, 0] # 0 - 9 -> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# #        0  1  2  3  4  5  6  7  8  9
+
+# #Reset the output back to zeros
+# output = [0, 0, 0, 0]
+# #         0  1  2  3
+
+# exp = 100
+# loop {
+#     arr[i] = 501    index = (arr[i] // exp) % 10 = (501 // 100) % 10 = 5 % 10 = 5
+#     c[index] += 1
+
+#     arr[i] = 3      index = (arr[i] // exp) % 10 = (3 // 100) % 10 = 0 % 10 = 0
+#     c[index] += 1
+
+#     arr[i] = 408    index = (arr[i] // exp) % 10 = (408 // 100) % 10 = 4 % 10 = 4
+#     c[index] += 1
+
+#     arr[i] = 24     index = (arr[i] // exp) % 10 = (24 // 100) % 10 = 0 % 10 = 0
+#     c[index] += 1
+# }
+
+# #cumulative count
+# loop {
+#     count  = [0, 2, 2, 2, 3, 3, 4, 4, 4, 4]
+#     #         0  1  2  3  4  5  6  7  8  9
+# }
+
+# output = [3, 24, 408, 501] -> final sorted list
+# #         0   1   2    3
+
+# #construct the output
+# i = len(arr) - 1
+# loop {
+#     arr[i] = 24
+#     index = (arr[i] // exp) % 10 = (24 // 100) % 10 = 0 % 10 = 0
+#     o[c[index] - 1] = arr[i] -> o[1] =  24
+#     c[index] -= 1
+
+#     arr[i] = 408
+#     index = (arr[i] // exp) % 10 = (408 // 100) % 10 = 4 % 10 = 4
+#     o[c[index] - 1] = arr[i] -> o[2] =  408
+#     c[index] -= 1
+
+#     arr[i] = 3
+#     index = (arr[i] // exp) % 10 = (3 // 100) % 10 = 0 % 10 = 0
+#     o[c[index] - 1] = arr[i] -> o[0] =  3
+#     c[index] -= 1
+
+#     arr[i] = 501
+#     index = (arr[i] // exp) % 10 = (501 // 100) % 10 = 50 % 10 = 5
+#     o[c[index] - 1] = arr[i] -> o[3] =  501
+#     c[index] -= 1
+# }
 
 
 def counting_sort(arr, exp):

@@ -33,7 +33,7 @@ def quick_sort(arr):
         elif x > pivot:
             r.append(x)
 
-    return quick_sort(r) + [pivot] + quick_sort(l)
+    return quick_sort(l) + [pivot] + quick_sort(r)
 
 nums = [10, 7, 8, 9, 1, 5]
 sorted_list = quick_sort(nums)

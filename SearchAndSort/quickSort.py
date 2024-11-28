@@ -9,6 +9,7 @@
 # return -> [0]
 
 
+"""Qick Sort is a Divide and Conquer algorithm"""
 
 # Time Complexity
 # O(n*log(n)) -> best/avg case

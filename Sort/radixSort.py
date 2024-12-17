@@ -257,5 +257,14 @@ def radix_sort(arr):
     return arr # final sorted list
 
 
-nums = [501, 408, 3, 24]
-print(radix_sort(nums))
+nums = [99, 97, 122, 121]
+
+nums = radix_sort(nums)
+for i in nums:
+    print(chr(i))
+
+
+
+# print(chr(99))
+
+# print('Aakash' == 'Aakash')

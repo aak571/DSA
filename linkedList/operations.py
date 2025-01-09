@@ -35,10 +35,50 @@ class LinkedList:
 
     def delete_node(self, key):
         current = self.head
-        if current and current.data == key:
+        # If the node to delete is first node
+        if current and current.data == key: # None -> False
             self.head = current.next
             current = None
             return
+
+        prev = None
+        while current and current.data != key:
+            prev = current
+            current = current.next
+
+        if not current:
+            print('Key does not exist')
+
+        prev.next = current.next
+        current = None
+
+    def search(self, key):
+        current = self.head
+        while current:
+            if current.data == key:
+                return True
+            current = current.next
+        return False
+
+    def display(self):
+        elements = []
+        current = self.head
+        while current:
+            elements.append(current.data)
+            current = current.next
+        return elements
+
+    def reverse(self):
+        prev = None
+        current = self.head
+
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+
+        self.head = prev
 
 ll = LinkedList()
 ll.insert_after()

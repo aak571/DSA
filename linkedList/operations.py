@@ -1,7 +1,8 @@
 class Node:
-    def __int__(self, Data):
+    def __init__(self, Data):
         self.data = Data
         self.next = None
+
 
 class LinkedList:
     def __init__(self):
@@ -80,5 +81,18 @@ class LinkedList:
 
         self.head = prev
 
+
 ll = LinkedList()
-ll.insert_after()
+ll.insertAtBegining(45)
+ll.insertAtEnd(100)
+ll.insertAtBegining(55)
+ll.insert_after(45, 47)
+ll.delete_node(55)
+print(ll.search(100))
+ll.insertAtBegining(450)
+ll.insertAtBegining(445)
+ll.insertAtBegining(34)
+ll.insertAtBegining(56)
+ll.insertAtBegining(12)
+ll.reverse()
+print(ll.display())

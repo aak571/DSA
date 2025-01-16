@@ -46,7 +46,6 @@ class LinkedList:
         while current and current.data != key:
             prev = current
             current = current.next
-
         if not current:
             print('Key does not exist')
 

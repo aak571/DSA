@@ -73,6 +73,7 @@ class DoublyCircularLinkedList:
                 current.prev.next = new_node
                 current.prev = new_node
                 return
+
             current = current.next
             if current == self.head:
                 break

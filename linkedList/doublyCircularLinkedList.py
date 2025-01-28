@@ -77,3 +77,96 @@ class DoublyCircularLinkedList:
             current = current.next
             if current == self.head:
                 break
+
+     # Delete a node
+    def delete(self, key):
+        if self.is_empty():
+            print("List is empty")
+            return
+        if self.head.data == key:
+            if self.head.next == self.head:
+                self.head = None
+            else:
+                print('Hi')
+                temp = self.head.prev
+                self.head = self.head.next
+                self.head.prev = temp
+                self.head.prev.next = self.head
+            return
+        current = self.head
+        while current:
+            if current.data == key:
+                current.prev.next = current.next
+                current.next.prev = current.prev
+                return
+            current = current.next
+            if current == self.head:
+                break
+
+    # Print the linked list
+    def print_list(self):
+        if self.is_empty():
+            print("List is empty")
+            return
+        current = self.head
+        while True:
+            print(current.data, end=" ")
+            current = current.next
+            if current == self.head:
+                break
+        print()
+
+    # Find a node by value
+    def find(self, key):
+        if self.is_empty():
+            print("List is empty")
+            return None
+        current = self.head
+        while True:
+            if current.data == key:
+                return current
+            current = current.next
+            if current == self.head:
+                break
+        print("Key not found")
+        return None
+
+     # Reverse the linked list
+    def reverse(self):
+        if self.is_empty():
+            print("List is empty")
+            return
+        current = self.head
+        prev = None
+        while True:
+            next_node = current.next
+            current.next = prev
+            current.prev = next_node
+            prev = current
+            current = next_node
+            if current == self.head:
+                break
+        self.head.next = prev
+        self.head = prev
+
+    # Count the number of nodes
+    def count_nodes(self):
+        if self.is_empty():
+            return 0
+        count = 0
+        current = self.head
+        while True:
+            count += 1
+            current = current.next
+            if current == self.head:
+                break
+        return count
+
+dll = DoublyCircularLinkedList()
+dll.add_at_beginning(12)
+dll.add_at_beginning(52)
+dll.add_at_beginning(32)
+dll.add_at_beginning(67)
+dll.print_list()
+dll.delete(67)
+dll.print_list()

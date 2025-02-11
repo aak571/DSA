@@ -25,3 +25,67 @@ class BinaryTree:
                 return
             else:
                 queue.append(temp.right)
+
+    def delete(self, key):
+        if self.root is None:
+            return None
+        if self.root.left is None and self.root.right is None:
+            if self.root.key == key:
+                self.root = None
+            return
+
+        queue = [self.root]
+        key_node = None
+        temp = None
+        while queue:
+            temp = queue.pop(0)
+            if temp.key == key:
+                key_node = temp
+            if temp.left:
+                queue.append(temp.left)
+            if temp.right:
+                queue.append(temp.right)
+
+        if key_node:
+            key_node.key = temp.key
+            self._delete_deepest(temp)
+
+    def _delete_deepest(self, d_node):
+        queue = [self.root]
+        while queue:
+            temp = queue.pop(0)
+            if temp is d_node:
+                temp = None
+                return
+            if temp.right:
+                if temp.right is d_node:
+                    temp.right = None
+                    return
+                else:
+                    queue.append(temp.right)
+            if temp.left:
+                if temp.left is d_node:
+                    temp.left = None
+                    return
+                else:
+                    queue.append(temp.left)
+
+    def search(self, key):
+        if self.root is None:
+            return False
+        queue = [self.root]
+        while queue:
+            temp = queue.pop(0)
+            if temp.key == key:
+                return True
+            if temp.left:
+                queue.append(temp.left)
+            if temp.right:
+                queue.append(temp.right)
+        return False
+
+    def inorder(self, node):
+        if node:
+            self.inorder(node.left)
+            print(node.key, end=' ')
+            self.inorder(node.right)

@@ -89,3 +89,26 @@ class BinaryTree:
             self.inorder(node.left)
             print(node.key, end=' ')
             self.inorder(node.right)
+
+    def preorder(self, node):
+        if node:
+            print(node.key, end=' ')
+            self.preorder(node.left)
+            self.preorder(node.right)
+
+    def level_order(self):
+        if self.root is None:
+            return
+        queue = [self.root]
+        while queue:
+            temp = queue.pop(0)
+            print(temp.key, end=' ')
+            if temp.left:
+                queue.append(temp.left)
+            if temp.right:
+                queue.append(temp.right)
+
+    def height(self, node):
+        if node is None:
+            return 0
+        return 1 + max(self.height(node.left), self.height(node.right))

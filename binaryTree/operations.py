@@ -108,7 +108,49 @@ class BinaryTree:
             if temp.right:
                 queue.append(temp.right)
 
+    def spiral_order(self):
+        if not self.root:
+            return
+        stack1 = [self.root]  # Right to Left
+        stack2 = []  # Left to Right
+        while stack1 or stack2:
+            while stack1:
+                temp = stack1.pop()
+                print(temp.key, end=' ')
+                if temp.right:
+                    stack2.append(temp.right)
+                if temp.left:
+                    stack2.append(temp.left)
+            while stack2:
+                temp = stack2.pop()
+                print(temp.key, end=' ')
+                if temp.left:
+                    stack1.append(temp.left)
+                if temp.right:
+                    stack1.append(temp.right)
+
     def height(self, node):
         if node is None:
             return 0
         return 1 + max(self.height(node.left), self.height(node.right))
+
+    def count_nodes(self, node):
+        if node is None:
+            return 0
+        return 1 + self.count_nodes(node.left) + self.count_nodes(node.right)
+
+    def find_max(self, node):
+        if node is None:
+            return float('-inf')
+        return max(node.key, self.find_max(node.left), self.find_max(node.right))
+
+    def find_min(self, node):
+        if node is None:
+            return float('inf')
+        return min(node.key, self.find_min(node.left), self.find_min(node.right))
+
+    def mirror(self, node):
+        if node is None:
+            return None
+        node.left, node.right = self.mirror(node.right), self.mirror(node.left)
+        return node
